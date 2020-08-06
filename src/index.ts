@@ -35,7 +35,12 @@ cron.schedule("0 0 * * *", async () => {
     then((chatUsers: any) =>  {
       chatUsers.forEach((chatUser: any) => telegram.sendMessage(chatUser.chatId, 'Meia noite, horário oficial do óleo de macaco'))
     });
-})
+},
+  {
+    scheduled: true,
+    timezone: "America/Sao_Paulo"
+  }
+);
 
 
 export {};

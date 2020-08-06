@@ -14,7 +14,12 @@ const bot = new Telegraf(process.env.BOT_HTTP_TOKEN as string);
 bot.start(async (ctx) => {
   ctx.reply('Te avisarei todos os dias para você não perder uma hora do óleo de macaco.')
   if(ctx){
-    await ChatUserModel.create({chatId: ctx?.chat?.id })
+    try {
+      await ChatUserModel.create({chatId: ctx?.chat?.id })
+    }
+    catch(err) {
+      console.log(err.message);
+    }
   }
 });
 

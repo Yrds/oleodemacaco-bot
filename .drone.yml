@@ -1,0 +1,12 @@
+kind: pipeline
+type: docker
+name: wakeup
+
+steps:
+  - name: wakeup
+    image: plugins/webhook
+    settings:
+      url:
+        from_secret: app_url
+      method:
+        from_secret: app_method

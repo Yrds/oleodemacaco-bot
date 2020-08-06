@@ -21,6 +21,8 @@ bot.start(async (ctx) => {
 bot.help((ctx) => ctx.reply('Não precisa fazer nada, eu te avisarei quando for a hora do óleo de macaco.'));
 
 bot.launch()
+const PORT = process.env.PORT as string;
+bot.startWebhook('/webhook', null, Number(PORT));
 
 cron.schedule("0 0 * * *", async () => {
   const telegram = new Telegram(process.env.BOT_HTTP_TOKEN as string);
